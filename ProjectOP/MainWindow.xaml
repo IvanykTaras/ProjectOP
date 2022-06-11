@@ -5,19 +5,57 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectOP"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
+        Title="MainWindow" Height="751" Width="800">
+    <Grid Background="White">
+            <!--Columns-->
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+            </Grid.ColumnDefinitions>
+            <!--Rows-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+
+        <TextBox
+                Grid.Column="1"
+                Grid.Row="1"
+                Width="400"
+                Height="50"
+                Padding="10 5"
+                Text="123"
+                FontSize="24"
+                
+                
+                />
+        <Button 
+            Content="Search"
+            Grid.Column="2"
+            Grid.Row="1"
+            Width="180"
+            Height="50"
+            FontSize="24"
+            VerticalAlignment="Center"
+            Margin=" 10 0"
+            Padding="5"
+            />
         
-        <Button Content="Click me 1" Grid.Column="3"/>
-        <Button Content="Click me 2" Grid.Column="2"/>
-        <Button Content="Click me 3" Grid.Column="1"/>
-        <Button Content="Click me 4" Grid.Column="0"/>
+        
+        
+        
+
+
+
+
 
     </Grid>
 </Window>
