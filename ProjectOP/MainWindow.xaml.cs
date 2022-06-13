@@ -37,13 +37,10 @@ namespace ProjectOP
             InitializeComponent();
         }
 
-        private async void Search_Click(object sender, RoutedEventArgs e)
+        private void Label_Clear(object sender, RoutedEventArgs e)
         {
-            PexelsClient client = new PexelsClient("YOUR_API_KEY");
-            var photos = await client.FeaturedCollectionsAsync(1,3);
-            if (photos != null) { 
-                Log.Text =  Convert.ToString(photos.totalResults);               
-            }
+            inputName.Clear();
+            inputPassword.Clear();
         }
     }
 }

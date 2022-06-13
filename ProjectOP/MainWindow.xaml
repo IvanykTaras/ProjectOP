@@ -6,99 +6,75 @@
         xmlns:local="clr-namespace:ProjectOP"
         mc:Ignorable="d"
         Title="MainWindow" Height="751" Width="800">
-    <Grid Background="White">
-        <!--Columns-->
+    <Grid Background="AliceBlue">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
             <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="20"/>
-        </Grid.ColumnDefinitions>
-        <!--Rows-->
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition Height="20"/>
-        </Grid.RowDefinitions>
-
-        
-        <TextBox
-            Grid.Column="1"
-            Grid.Row="1"
-            Grid.ColumnSpan="2"
-            Width="400"
-            Height="50"
-            Padding="10 5"
-            Text="123"
-            FontSize="24"    
-            />
-        <Button 
-            Content="Search"
-            Grid.Column="3"
-            Grid.Row="1"
-            Width="180"
-            Height="50"
-            FontSize="24"
-            VerticalAlignment="Center"
-            Padding="5" 
-            Click="Search_Click"
             
-            />
-
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
         
-        <Rectangle
-            Grid.Column="1"
-            Grid.Row="2"
-            Stroke="White" 
-            Margin="5"
-            >
-
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="C:\Users\khrys\OneDrive\Pulpit\275839862_308123528074874_5488716492570216254_n.jpg" />
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <Rectangle
-            Grid.Column="2"
-            Grid.Row="2"
-            Stroke="White" 
-            Margin="5"
-            >
-
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="C:\Users\khrys\OneDrive\Pulpit\275839862_308123528074874_5488716492570216254_n.jpg" />
-            </Rectangle.Fill>
-        </Rectangle>
-
-        <Rectangle
-            Grid.Column="3"
-            Grid.Row="2"
-            Stroke="White" 
-            Margin="5"
-            >
-
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="C:\Users\khrys\OneDrive\Pulpit\275839862_308123528074874_5488716492570216254_n.jpg" />
-            </Rectangle.Fill>
-        </Rectangle>
         
-        <TextBlock
-            x:Name="Log"
-            FontSize="30"
+        <TextBlock 
+            Grid.Row="0"
+            Text="Login"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30"/>
+        <!--User Name text-->
+        <TextBlock 
+            FontSize="24"
+            Margin="0 30 0 0"
+            HorizontalAlignment="Center"
+            Grid.Row="1"
+            Text="User Name" 
+            VerticalAlignment="Top"/>
+        <!--User Name-->
+        <TextBox
+            x:Name="inputName"
+            Padding="5"
+            Grid.Row="1" 
+            Width="250"
+            Height="50"
+            FontSize="24"/>
+        <!--Password text-->
+        <TextBlock 
+            FontSize="24"
+            Margin="0 30 0 0"
+            HorizontalAlignment="Center"
+            Grid.Row="2"
+            Text="Password" 
+            VerticalAlignment="Top"/>
+        <!--Password-->
+        <PasswordBox 
+            x:Name="inputPassword"
+            Padding="5"
+            Grid.Row="2"
+            Width="250"
+            Height="50"
+            FontSize="24"/>
+        <Button 
+            Content="Enter" 
+            HorizontalAlignment="Center" 
+            Grid.Row="3" 
+            VerticalAlignment="Center"
+            Width="250"
+            Height="50"
+            FontSize="24"/>
+        <Label 
+            Content="Clear"
+            HorizontalAlignment="Center" 
             Grid.Row="3"
-            Grid.Column="2"
-            TextWrapping="Wrap"
-            Text="TextBlock"/>
-
-
-
-
-
-
+            Margin="-500 0 0 0"
+            FontSize="24"
+            Foreground="Red"
+            VerticalAlignment="Center"
+            FontWeight="Bold"
+            Cursor="Hand" MouseLeftButtonUp="Label_Clear"/>
 
 
 
