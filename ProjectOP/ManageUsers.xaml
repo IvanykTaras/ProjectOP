@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectOP"
         mc:Ignorable="d"
-        Title="ManageUsers" Height="450" Width="800">
+        Title="ManageUsers" Height="450" Width="800"
+        Loaded="Refresh"
+        >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
@@ -56,15 +58,17 @@
             Grid.Row="2"
             Grid.Column="0">
             <Button Content="Add" Click="AddElement"/>
-            <Button Content="Edit"/>
+            <Button Content="Edit" />
             <Button Content="Delete"/>
             <Button Content="Home"/>
+            <Button Content="Show Users" Click="Refresh"/>
 
 
 
         </StackPanel>
 
         <StackPanel
+            x:Name="usersStackTable"
             Grid.Row="1"
             Grid.Column="1"
             Grid.RowSpan="2"

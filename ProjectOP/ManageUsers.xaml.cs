@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace ProjectOP
 {
@@ -24,6 +25,7 @@ namespace ProjectOP
         {
             InitializeComponent();
         }
+        
 
         
         SqlConnection Conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30");
@@ -45,11 +47,32 @@ namespace ProjectOP
                 Conn.Close();
             
             }
-            catch (Exception)
+            catch (Exception exeption)
             {
 
-                throw;
+                MessageBox.Show("Some problems with adding new user!!!");
             }
+        }
+
+        void showAllUsers() {
+            Conn.Open();
+            string myQuery = "select * from UserTb1";
+            SqlDataAdapter da = new SqlDataAdapter(myQuery, Conn);
+            SqlCommandBuilder builder = new SqlCommandBuilder(da);
+            var ds = new DataSet();
+            da.Fill(ds,"Users");
+            DataTable usersTable = ds.Tables["Users"];
+            foreach (DataRow row in usersTable.Rows) {
+                usersStackTable.Children.Add(new TextBlock() { Text = (string)row["uname"]});
+            }
+            Conn.Close();
+            
+        }
+
+        private void Refresh(object sender, RoutedEventArgs e)
+        {
+            usersStackTable.Children.Clear();
+            showAllUsers();
         }
     }
 }
