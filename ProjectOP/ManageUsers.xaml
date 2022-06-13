@@ -58,10 +58,9 @@
             Grid.Row="2"
             Grid.Column="0">
             <Button Content="Add" Click="AddElement"/>
-            <Button Content="Edit" />
-            <Button Content="Delete"/>
-            <Button Content="Home"/>
-            <Button Content="Show Users" Click="Refresh"/>
+            <Button Content="Delete" Click="Delete"/>
+            <Button Content="Home" Click="Home"/>
+            <Button Content="Refresh table" Click="Refresh"/>
 
 
 

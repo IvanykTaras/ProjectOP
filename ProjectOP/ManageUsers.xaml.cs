@@ -30,6 +30,17 @@ namespace ProjectOP
         
         SqlConnection Conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30");
 
+        bool emptyChecker()
+        {
+            if (unameTB.Text == String.Empty || ufullnameTB.Text == String.Empty || upasswordTB.Text == String.Empty && utelephoneTB.Text == String.Empty) {
+                MessageBox.Show("Ops some input is empty");
+                return false;
+            } 
+                
+            
+            return true;
+        }
+
         private void Label_Exit(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -39,12 +50,16 @@ namespace ProjectOP
         {
             try
             {
-            
-                Conn.Open();
-                SqlCommand command = new SqlCommand("insert into UserTb1 values('"+ unameTB.Text + "','"+ufullnameTB.Text+"', '"+ upasswordTB.Text+"', '"+ utelephoneTB.Text+"');",Conn);
-                command.ExecuteNonQuery();
-                MessageBox.Show("User successfully added");
-                Conn.Close();
+
+                if (emptyChecker())
+                {
+
+                    Conn.Open();
+                    SqlCommand command = new SqlCommand("insert into UserTb1 values('" + unameTB.Text + "','" + ufullnameTB.Text + "', '" + upasswordTB.Text + "', '" + utelephoneTB.Text + "');", Conn);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("User successfully added");
+                    Conn.Close();
+                }
             
             }
             catch (Exception exeption)
@@ -125,6 +140,59 @@ namespace ProjectOP
         {
             usersStackTable.Children.Clear();
             showAllUsers();
+        }
+
+        private void Delete(object sender, RoutedEventArgs e)
+        {
+            if (utelephoneTB.Text == string.Empty)
+            {
+                MessageBox.Show("To delete user u need enter only Phone.");
+            }
+            else
+            {
+                try
+                {
+                    Conn.Open();
+                    string myquery2 = "select * from UserTb1";
+                    SqlDataAdapter da = new SqlDataAdapter(myquery2, Conn);
+                    SqlCommandBuilder builder = new SqlCommandBuilder(da);
+                    var ds = new DataSet();
+                    da.Fill(ds, "Users");
+                    DataTable usersTable = ds.Tables["Users"];
+                    bool isReal = false;
+                    foreach (DataRow row in usersTable.Rows)
+                    {
+                        if ((string)row["UPhone"] == utelephoneTB.Text) isReal = true;
+                    }
+                    Conn.Close();
+
+                    if (isReal)
+                    {
+                        Conn.Open();
+                        string myquery = "delete from UserTb1 where UPhone='" + utelephoneTB.Text + "'";
+                        SqlCommand command = new SqlCommand(myquery, Conn);
+                        command.ExecuteNonQuery();
+                        MessageBox.Show("User successfully deleted");
+                        Conn.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Wrong Phone value pls try again.");
+                    }
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Some problems with deleting or user doesnt exist!!!");
+                }
+            }
+        }
+
+        private void Home(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            this.Close();
         }
     }
 }
