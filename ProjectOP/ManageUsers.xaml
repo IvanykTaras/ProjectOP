@@ -1,0 +1,91 @@
+﻿<Window x:Class="ProjectOP.ManageUsers"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProjectOP"
+        mc:Ignorable="d"
+        Title="ManageUsers" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        
+        <StackPanel 
+            Background="BlueViolet"
+            Grid.ColumnSpan="3"
+            Grid.Column="0"
+            Grid.Row="0"
+                >
+            <TextBlock 
+            Text="Inventory managment system"
+            FontSize="36"
+            HorizontalAlignment="Center"/>
+            
+            <TextBlock 
+            Text="Manage users"
+            FontSize="30"
+            HorizontalAlignment="Center"/>
+        </StackPanel>
+
+
+        <StackPanel
+            Background="AliceBlue"
+            Grid.Row="1"
+            Grid.Column="0">
+            
+            <Label Content="User Name"/>
+            <TextBox x:Name="unameTB"/>
+            <Label Content="Full Name"/>
+            <TextBox x:Name="ufullnameTB"/>
+            <Label Content="Password"/>
+            <TextBox x:Name="upasswordTB"/>
+            <Label Content="Telephone"/>
+            <TextBox x:Name="utelephoneTB"/>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="2"
+            Grid.Column="0">
+            <Button Content="Add" Click="AddElement"/>
+            <Button Content="Edit"/>
+            <Button Content="Delete"/>
+            <Button Content="Home"/>
+
+
+
+        </StackPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Grid.Column="1"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            Background="AntiqueWhite"
+            >
+            
+        </StackPanel>
+        
+        
+        <Label 
+            Foreground="Red"
+            Grid.Column="2"
+            Content="X"
+            FontSize="24"
+            HorizontalAlignment="Right" 
+            VerticalAlignment="Top"
+            Cursor="Hand"
+            MouseLeftButtonUp="Label_Exit"/>
+
+
+
+    </Grid>
+</Window>

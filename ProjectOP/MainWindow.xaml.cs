@@ -17,6 +17,8 @@ using System.Windows.Shapes;
 //Pexels
 using PexelsDotNetSDK.Api;
 using Newtonsoft.Json;
+using System.Data.SqlClient;
+
 
 namespace ProjectOP
 {
@@ -27,11 +29,7 @@ namespace ProjectOP
 
     public partial class MainWindow : Window
     {
-        private async void DownloadJsonData()
-        {
-
-        }
-
+       
         public MainWindow()
         {
             InitializeComponent();
@@ -41,6 +39,13 @@ namespace ProjectOP
         {
             inputName.Clear();
             inputPassword.Clear();
+        }
+
+        private void Enter_Click(object sender, RoutedEventArgs e)
+        {
+            ManageUsers window = new ManageUsers();
+            window.Show();
+            this.Close();
         }
     }
 }
