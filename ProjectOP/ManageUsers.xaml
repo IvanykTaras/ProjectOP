@@ -74,11 +74,9 @@
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
             Background="AntiqueWhite"
-            >
-            
-        </StackPanel>
-        
-        
+            />
+
+
         <Label 
             Foreground="Red"
             Grid.Column="2"
