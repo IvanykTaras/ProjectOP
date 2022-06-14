@@ -44,7 +44,8 @@ namespace ProjectOP
         private void Enter_Click(object sender, RoutedEventArgs e)
         {
             ManageUsers window = new ManageUsers();
-            window.Show();
+            ManageCustomers window2 = new ManageCustomers();
+            window2.Show();
             this.Close();
         }
     }
