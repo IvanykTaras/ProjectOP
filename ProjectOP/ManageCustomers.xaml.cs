@@ -1,7 +1,4 @@
 ﻿
-    
-
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -63,7 +60,7 @@ namespace ProjectOP
                     Conn.Open();
                     SqlCommand command = new SqlCommand("insert into CustomerTb1 values('" + custoemerIdTB.Text + "','" + customerNameTB.Text + "', '" + customerPhoneTB.Text + "');", Conn);
                     command.ExecuteNonQuery();
-                    MessageBox.Show("User successfully added");
+                    MessageBox.Show("Customer successfully added");
                     Conn.Close();
                 }
 
@@ -71,7 +68,7 @@ namespace ProjectOP
             catch (Exception exeption)
             {
 
-                MessageBox.Show("Some problems with adding new user!!!");
+                MessageBox.Show("Some problems with adding new customer!!!");
             }
         }
 
@@ -162,7 +159,7 @@ namespace ProjectOP
         {
             if (customerPhoneTB.Text == string.Empty)
             {
-                MessageBox.Show("To delete user u need enter only Phone.");
+                MessageBox.Show("To delete ucustomer u need enter only Phone.");
             }
             else
             {
@@ -199,7 +196,7 @@ namespace ProjectOP
                 catch (Exception)
                 {
 
-                    MessageBox.Show("Some problems with deleting or user doesnt exist!!!");
+                    MessageBox.Show("Some problems with deleting or cusomer doesnt exist!!!");
                 }
             }
         }

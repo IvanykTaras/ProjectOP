@@ -45,7 +45,9 @@ namespace ProjectOP
         {
             ManageUsers window = new ManageUsers();
             ManageCustomers window2 = new ManageCustomers();
-            window2.Show();
+            ManageCategories window3 = new ManageCategories();
+
+            window.Show();
             this.Close();
         }
     }
