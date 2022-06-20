@@ -27,7 +27,7 @@ namespace ProjectOP
         }
 
         static string dataBasePath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30";
-
+        controllDataBase controll = new controllDataBase(dataBasePath);
 
         SqlConnection Conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30");
 
@@ -55,11 +55,11 @@ namespace ProjectOP
                 if (emptyChecker())
                 {
 
-                    Conn.Open();
-                    SqlCommand command = new SqlCommand("insert into UserTb1 values('" + unameTB.Text + "','" + ufullnameTB.Text + "', '" + upasswordTB.Text + "', '" + utelephoneTB.Text + "');", Conn);
-                    command.ExecuteNonQuery();
+                    //SqlCommand command = new SqlCommand("insert into UserTb1 values('" + unameTB.Text + "','" + ufullnameTB.Text + "', '" + upasswordTB.Text + "', '" + utelephoneTB.Text + "');", Conn);
+                    controll.Add("UserTb1", "" + unameTB.Text + "','" + ufullnameTB.Text + "', '" + upasswordTB.Text + "', '" + utelephoneTB.Text + "");
+
                     MessageBox.Show("User successfully added");
-                    Conn.Close();
+                    
                 }
             
             }
@@ -167,7 +167,7 @@ namespace ProjectOP
                     Conn.Close();
 
                     
-                        controllDataBase controll = new controllDataBase(dataBasePath);
+                        
                         controll.Delete("UserTb1","UPhone", utelephoneTB.Text);
                         
                         MessageBox.Show("User successfully deleted");
