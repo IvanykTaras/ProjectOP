@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -55,6 +56,29 @@ namespace ProjectOP
             
         }
 
+        //==================
+        //Getting table data
+        //==================
+
+        public DataTable Get(string tableName, string columnNames)
+        {
+            using (SqlConnection Conn = new SqlConnection(_dataBasePath))
+            {
+                Conn.Open();
+                string myQuery = "select " + columnNames + " from " + tableName;
+
+                using (SqlDataAdapter da = new SqlDataAdapter(myQuery, Conn)) { 
+                    SqlCommandBuilder builder = new SqlCommandBuilder(da);
+                    var ds = new DataSet();
+                    da.Fill(ds, "Table");
+                    DataTable table = ds.Tables["Table"];
+                    Conn.Close();
+                    return table;
+                }
+
+
+            }
+        }
 
     }
 }

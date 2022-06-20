@@ -71,13 +71,7 @@ namespace ProjectOP
         }
 
         void showAllUsers() {
-            Conn.Open();
-            string myQuery = "select * from UserTb1";
-            SqlDataAdapter da = new SqlDataAdapter(myQuery, Conn);
-            SqlCommandBuilder builder = new SqlCommandBuilder(da);
-            var ds = new DataSet();
-            da.Fill(ds,"Users");
-            DataTable usersTable = ds.Tables["Users"];
+            
 
 
             var HeaderBlock1 = new Border()
@@ -116,6 +110,7 @@ namespace ProjectOP
             usersStackTable.Children.Add(stackHeader);
 
 
+            DataTable usersTable = controll.Get("UserTb1","*");
             foreach (DataRow row in usersTable.Rows) {
                 
                 var block1 = new Border() { BorderBrush = (SolidColorBrush)new BrushConverter().ConvertFrom("#000"), BorderThickness = new Thickness(1), Width = 100,
@@ -133,7 +128,7 @@ namespace ProjectOP
                 stack.Children.Add(block4);
                 usersStackTable.Children.Add(stack);
             }
-            Conn.Close();
+            
             
         }
 
