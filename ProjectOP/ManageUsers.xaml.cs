@@ -25,9 +25,10 @@ namespace ProjectOP
         {
             InitializeComponent();
         }
-        
 
-        
+        static string dataBasePath = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30";
+
+
         SqlConnection Conn = new SqlConnection(@"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\khrys\OneDrive\Dokumenty\Inventorydb.mdf;Integrated Security=True;Connect Timeout=30");
 
         bool emptyChecker()
@@ -150,8 +151,7 @@ namespace ProjectOP
             }
             else
             {
-                try
-                {
+                
                     Conn.Open();
                     string myquery2 = "select * from UserTb1";
                     SqlDataAdapter da = new SqlDataAdapter(myquery2, Conn);
@@ -166,25 +166,12 @@ namespace ProjectOP
                     }
                     Conn.Close();
 
-                    if (isReal)
-                    {
-                        Conn.Open();
-                        string myquery = "delete from UserTb1 where UPhone='" + utelephoneTB.Text + "'";
-                        SqlCommand command = new SqlCommand(myquery, Conn);
-                        command.ExecuteNonQuery();
+                    
+                        controllDataBase controll = new controllDataBase(dataBasePath);
+                        controll.Delete("UserTb1","UPhone", utelephoneTB.Text);
+                        
                         MessageBox.Show("User successfully deleted");
-                        Conn.Close();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Wrong Phone value pls try again.");
-                    }
-                }
-                catch (Exception)
-                {
-
-                    MessageBox.Show("Some problems with deleting or user doesnt exist!!!");
-                }
+               
             }
         }
 
